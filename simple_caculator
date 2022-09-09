@@ -1,0 +1,127 @@
+# issue is that operation is not changing
+
+from tkinter import *
+
+global operation
+operation = 0
+root = Tk()
+root.title("Simple Calculator")
+#1 = addition
+#2 = subtraction
+# 3 = multiplication
+# 4 = division
+inputedArea = Entry(root, width = 40, borderwidth = 3)
+inputedArea.grid(row = 0, column = 0, columnspan = 3, padx = 10, pady = 10)
+print(5)
+def placeClick(number ):
+	#inputedArea.delete(0, END)
+	current = inputedArea.get()
+	inputedArea.delete(0, END)
+	inputedArea.insert(0, str(current) + str(number))
+
+def addClick(operation):
+	print("hi")
+	operation += 1
+	print("hi")
+	print(operation)
+	firstNumber = inputedArea.get()
+	global fNum
+	fNum = int(firstNumber)
+	inputedArea.delete(0, END)
+
+def multiplyFunc(operation):
+	operation += 3
+	firstMultiply = inputedArea.get()
+	global fMul
+	fMul = int(firstMultiply)
+	inputedArea.delete(0, END)
+
+def divideFunc(operation):
+	operation += 4
+	firstDiv = inputedArea.get()
+	global fDiv 
+	fDiv = int(firstDiv)
+	inputedArea.delete(0, END)
+
+def equalButt(operation):
+	print(operation)
+	secondNumber = inputedArea.get()
+	global sNum
+	sNum = int(secondNumber)
+	inputedArea.delete(0, END)
+	# global sNum
+	# sNum = int(secondNumber )
+	if operation == 1:
+		answer = int(sNum) + int(fNum)
+		#print(answer)
+		inputedArea.insert(0, answer)
+	if operation == 3:
+		answer = int(fMul) * int(sNum)
+		inputedArea.insert(0, answer)
+	if operation == 4:
+		answer = int(sNum) / int(fDiv)
+		inputedArea.insert(0, answer)
+	if operation == 0:
+		inputedArea.insert(0, "hi")
+
+
+#operation is changing to 0 in before equal 
+
+	# onlyLoop = False
+	# firstAddend = inputedArea.get()
+	# inputedArea.delete(0, END)
+	# if equal is True:
+	# 		secondAddend = inputedArea.get()
+	# 		print(firstAddend + secondAddend)
+
+
+def clear():
+	inputedArea.delete(0, END)
+
+
+#Defining The Buttons
+
+button_1 = Button(root, text = "1", padx = 40, pady = 20, command = lambda : placeClick(1))
+button_2 = Button(root, text = "2", padx = 40, pady = 20, command = lambda : placeClick(2))
+button_3 = Button(root, text = "3", padx = 40, pady = 20, command = lambda : placeClick(3))
+button_4 = Button(root, text = "4", padx = 40, pady = 20, command = lambda : placeClick(4))
+button_5 = Button(root, text = "5", padx = 40, pady = 20, command = lambda : placeClick(5))
+button_6 = Button(root, text = "6", padx = 40, pady = 20, command = lambda : placeClick(6))
+button_7 = Button(root, text = "7", padx = 40, pady = 20, command = lambda : placeClick(7))
+button_8 = Button(root, text = "8", padx = 40, pady = 20, command = lambda : placeClick(8))
+button_9 = Button(root, text = "9", padx = 40, pady = 20, command = lambda : placeClick(9))
+button_0 = Button(root, text = "0", padx = 40, pady = 20, command = lambda : placeClick(0))
+button_add = Button(root, text = "+", padx = 40, pady = 20, command = lambda : addClick(operation))
+button_equal = Button(root, text = "=", padx = 91, pady = 20, command = lambda : equalButt(operation))
+button_clear = Button(root, text = "Clear", padx = 80, pady = 20, command = clear)
+button_multiply = Button(root, text = "x", padx = 41, pady = 20, command = lambda : multiplyFunc(operation))
+button_divide = Button(root, text = "÷", padx = 39, pady = 20, command = lambda : divideFunc(operation))
+
+#command = lambdaplaceClick())
+
+button_1.grid(row = 3, column = 0)
+button_2.grid(row = 3, column = 1)
+button_3.grid(row = 3, column = 2)
+
+button_4.grid(row = 2, column = 0)
+button_5.grid(row = 2, column = 1)
+button_6.grid(row = 2, column = 2)
+
+button_7.grid(row = 1, column = 0)
+button_8.grid(row = 1, column = 1)
+button_9.grid(row = 1, column = 2)
+
+button_0.grid(row = 4, column = 0)
+
+button_add.grid(row = 5, column = 0)
+button_equal.grid(row = 5, column = 1, columnspan = 2)
+button_clear.grid(row = 4, column = 1, columnspan = 2)
+
+button_multiply.grid(row = 6, column = 0)
+button_divide.grid(row = 6, column = 1)
+
+root.mainloop()
+
+
+
+
